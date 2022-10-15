@@ -7,7 +7,6 @@ const app = express();
 
 //extra packages/security packages
 const cors = require("cors");
-
 const helmet = require("helmet");
 const xss = require("xss-clean");
 const mongoSanitize = require("express-mongo-sanitize");
@@ -33,18 +32,16 @@ app.use(helmet());
 app.use(xss());
 app.use(mongoSanitize());
 
+//routes
 app.get("/", (req, res) => {
   res.send("hello world");
 });
-
 app.use("/api/v1/auth", authRouter);
 app.use("/api/v1/user", userRouter);
 app.use("/api/v1/jobs", jobRouter);
 
 app.use(errorHandlerMiddleware);
 app.use(notFound);
-
-//routes
 
 //port
 const port = process.env.PORT || 4000;
