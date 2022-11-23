@@ -15,9 +15,8 @@ const createJob = async (req, res) => {
     date,
     status,
   });
-  console.log(job);
 
-  res.status(StatusCodes.OK).json({ msg: "Job created" });
+  res.status(StatusCodes.OK).json({ job, msg: "Job created" });
 };
 
 const getAllJobs = async (req, res) => {
